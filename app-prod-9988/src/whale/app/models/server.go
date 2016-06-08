@@ -22,6 +22,8 @@ type Server struct {
 func (server *Server) Validate(v *revel.Validation) {
 	server.Theme = strings.TrimSpace(server.Theme)
 	server.Content = strings.TrimSpace(server.Content)
+	server.Content = strings.Replace(server.Content, " ", "", -1)
+	server.Content = strings.Replace(server.Content, "\r\n", "", -1)
 
 	v.Check(server.Theme,
 		revel.Required{},
@@ -32,7 +34,7 @@ func (server *Server) Validate(v *revel.Validation) {
 		revel.Required{},
 		revel.MinSize{Min: 1},
 		revel.MaxSize{Max: 30000},
-	).Key("server.Content").Message("内容要大于1个字符小于30000个字符")
+	).Key("server.Content").Message("内容要大于1个字符小于50000个字符")
 }
 
 func (server *Server) ValidateInsert(v *revel.Validation) {
