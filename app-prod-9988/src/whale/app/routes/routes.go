@@ -70,6 +70,75 @@ func (_ tStatic) ServeModule(
 }
 
 
+type tApp struct {}
+var App tApp
+
+
+func (_ tApp) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("App.Index", args).Url
+}
+
+
+type tAuth struct {}
+var Auth tAuth
+
+
+func (_ tAuth) Login(
+		user interface{},
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "user", user)
+	return revel.MainRouter.Reverse("Auth.Login", args).Url
+}
+
+func (_ tAuth) Logout(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Auth.Logout", args).Url
+}
+
+
+type tCmds struct {}
+var Cmds tCmds
+
+
+func (_ tCmds) List(
+		agentId string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "agentId", agentId)
+	return revel.MainRouter.Reverse("Cmds.List", args).Url
+}
+
+func (_ tCmds) Operate(
+		agentId string,
+		id string,
+		cmd interface{},
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "agentId", agentId)
+	revel.Unbind(args, "id", id)
+	revel.Unbind(args, "cmd", cmd)
+	return revel.MainRouter.Reverse("Cmds.Operate", args).Url
+}
+
+func (_ tCmds) Del(
+		id string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "id", id)
+	return revel.MainRouter.Reverse("Cmds.Del", args).Url
+}
+
+
 type tServers struct {}
 var Servers tServers
 
@@ -334,75 +403,6 @@ func (_ tAgents) SshJoin(
 	
 	revel.Unbind(args, "agentId", agentId)
 	return revel.MainRouter.Reverse("Agents.SshJoin", args).Url
-}
-
-
-type tApp struct {}
-var App tApp
-
-
-func (_ tApp) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("App.Index", args).Url
-}
-
-
-type tAuth struct {}
-var Auth tAuth
-
-
-func (_ tAuth) Login(
-		user interface{},
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "user", user)
-	return revel.MainRouter.Reverse("Auth.Login", args).Url
-}
-
-func (_ tAuth) Logout(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Auth.Logout", args).Url
-}
-
-
-type tCmds struct {}
-var Cmds tCmds
-
-
-func (_ tCmds) List(
-		agentId string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "agentId", agentId)
-	return revel.MainRouter.Reverse("Cmds.List", args).Url
-}
-
-func (_ tCmds) Operate(
-		agentId string,
-		id string,
-		cmd interface{},
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "agentId", agentId)
-	revel.Unbind(args, "id", id)
-	revel.Unbind(args, "cmd", cmd)
-	return revel.MainRouter.Reverse("Cmds.Operate", args).Url
-}
-
-func (_ tCmds) Del(
-		id string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "id", id)
-	return revel.MainRouter.Reverse("Cmds.Del", args).Url
 }
 
 

@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os/exec"
 	"runtime/debug"
+	"strings"
 	"sync"
 	"time"
 	"whale/app/core/email"
@@ -125,13 +126,29 @@ func (j Job) Run() {
 	}
 
 	if j.task.Notify == models.EMAIL_NO_SEND {
-		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+		if strings.Contains(j.task.NotifyContent, "html") {
+			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		} else {
+			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		}
 	} else if j.task.Notify == models.EMAIL_SEND_IF_SUC && err == nil {
-		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+		if strings.Contains(j.task.NotifyContent, "html") {
+			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		} else {
+			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		}
 	} else if j.task.Notify == models.EMAIL_SEND_IF_ERR && err != nil {
-		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+		if strings.Contains(j.task.NotifyContent, "html") {
+			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		} else {
+			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		}
 	} else if j.task.Notify == models.EMAIL_SEND_IF_END {
-		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+		if strings.Contains(j.task.NotifyContent, "html") {
+			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		} else {
+			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
+		}
 	}
 
 	models.InsertTaskLogOne(log)
