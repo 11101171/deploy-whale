@@ -12,6 +12,13 @@ import (
 	"github.com/revel/revel"
 )
 
+const (
+	EMAIL_NO_SEND = iota
+	EMAIL_SEND_IF_SUC
+	EMAIL_SEND_IF_ERR
+	EMAIL_SEND_IF_END
+)
+
 type Task struct {
 	Base
 	TaskId       string

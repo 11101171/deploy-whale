@@ -87,6 +87,274 @@ func main() {
 			
 		})
 	
+	revel.RegisterController((*controllers.Servers)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					40: []string{ 
+						"servers",
+						"jsonBody",
+						"server",
+						"admin",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					46: []string{ 
+						"servers",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Operate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "server", Type: reflect.TypeOf((*models.Server)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					55: []string{ 
+						"server",
+					},
+					57: []string{ 
+					},
+					62: []string{ 
+						"server",
+					},
+					71: []string{ 
+						"server",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Del",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Active",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "apiParamId", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "apiParam", Type: reflect.TypeOf((*models.ApiParam)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					96: []string{ 
+						"apiParam",
+						"serverId",
+						"apiParamId",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Share",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					141: []string{ 
+						"server",
+						"jsonBody",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Encode",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "apiParamId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Info",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					160: []string{ 
+					},
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Tasks)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "GroupList",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					24: []string{ 
+						"taskGroups",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "GroupOperate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "taskGroup", Type: reflect.TypeOf((*models.TaskGroup)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					33: []string{ 
+						"taskGroup",
+					},
+					35: []string{ 
+					},
+					40: []string{ 
+						"taskGroup",
+					},
+					49: []string{ 
+						"taskGroup",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "GroupDel",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "TaskList",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "groupId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					77: []string{ 
+						"tasks",
+						"taskLogs",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "TaskOperate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "task", Type: reflect.TypeOf((*models.Task)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					87: []string{ 
+						"task",
+						"group",
+					},
+					89: []string{ 
+						"group",
+					},
+					94: []string{ 
+						"task",
+						"group",
+					},
+					103: []string{ 
+						"task",
+						"group",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "TaskStart",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "TaskStop",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "TaskLog",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					161: []string{ 
+						"taskLog",
+						"task",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "AjaxTaskLogList",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "page", Type: reflect.TypeOf((*int)(nil)) },
+					&revel.MethodArg{Name: "pageSize", Type: reflect.TypeOf((*int)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "Send",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Users)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					21: []string{ 
+						"users",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Operate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					30: []string{ 
+						"user",
+					},
+					32: []string{ 
+					},
+					37: []string{ 
+						"user",
+					},
+					45: []string{ 
+						"user",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Del",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
 	revel.RegisterController((*controllers.Agents)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -251,267 +519,6 @@ func main() {
 			
 		})
 	
-	revel.RegisterController((*controllers.Servers)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					40: []string{ 
-						"servers",
-						"jsonBody",
-						"server",
-						"admin",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "List",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					46: []string{ 
-						"servers",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Operate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "server", Type: reflect.TypeOf((*models.Server)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					55: []string{ 
-						"server",
-					},
-					57: []string{ 
-					},
-					62: []string{ 
-						"server",
-					},
-					71: []string{ 
-						"server",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Del",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "Active",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "apiParamId", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "apiParam", Type: reflect.TypeOf((*models.ApiParam)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					96: []string{ 
-						"apiParam",
-						"serverId",
-						"apiParamId",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Share",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					141: []string{ 
-						"server",
-						"jsonBody",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Encode",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "serverId", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "apiParamId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "Info",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					160: []string{ 
-					},
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Tasks)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "GroupList",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					23: []string{ 
-						"taskGroups",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "GroupOperate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "taskGroup", Type: reflect.TypeOf((*models.TaskGroup)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					32: []string{ 
-						"taskGroup",
-					},
-					34: []string{ 
-					},
-					39: []string{ 
-						"taskGroup",
-					},
-					48: []string{ 
-						"taskGroup",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "GroupDel",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "TaskList",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "groupId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					76: []string{ 
-						"tasks",
-						"taskLogs",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "TaskOperate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "task", Type: reflect.TypeOf((*models.Task)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					86: []string{ 
-						"task",
-						"group",
-					},
-					88: []string{ 
-						"group",
-					},
-					93: []string{ 
-						"task",
-						"group",
-					},
-					102: []string{ 
-						"task",
-						"group",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "TaskStart",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "TaskStop",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "TaskLog",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					160: []string{ 
-						"taskLog",
-						"task",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "AjaxTaskLogList",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "page", Type: reflect.TypeOf((*int)(nil)) },
-					&revel.MethodArg{Name: "pageSize", Type: reflect.TypeOf((*int)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Users)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "List",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					21: []string{ 
-						"users",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Operate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					30: []string{ 
-						"user",
-					},
-					32: []string{ 
-					},
-					37: []string{ 
-						"user",
-					},
-					45: []string{ 
-						"user",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Del",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
 	revel.DefaultValidationKeys = map[string]map[int]string{ 
 		"whale/app/models.(*Agent).Validate": { 
 			39: "a.Host",
@@ -540,8 +547,8 @@ func main() {
 			48: "server.ServerId",
 		},
 		"whale/app/models.(*Task).Validate": { 
-			48: "t.TaskName",
-			51: "t.Command",
+			55: "t.TaskName",
+			58: "t.Command",
 		},
 		"whale/app/models.(*TaskGroup).Validate": { 
 			29: "tg.GroupName",

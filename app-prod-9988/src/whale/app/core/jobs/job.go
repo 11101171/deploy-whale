@@ -12,6 +12,7 @@ import (
 	"runtime/debug"
 	"sync"
 	"time"
+	"whale/app/core/email"
 	"whale/app/models"
 
 	"github.com/revel/revel"
@@ -120,7 +121,19 @@ func (j Job) Run() {
 		log.Error = err.Error() + ":" + string(berr)
 	} else {
 		log.Status = 1
+
 	}
+
+	if j.task.Notify == models.EMAIL_NO_SEND {
+		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+	} else if j.task.Notify == models.EMAIL_SEND_IF_SUC && err == nil {
+		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+	} else if j.task.Notify == models.EMAIL_SEND_IF_ERR && err != nil {
+		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+	} else if j.task.Notify == models.EMAIL_SEND_IF_END {
+		email.SendHtmlMail(j.task.NotifyEmail, "revel email", "<html><h>hello</html>")
+	}
+
 	models.InsertTaskLogOne(log)
 
 	// 更新上次执行时间
