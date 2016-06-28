@@ -74,6 +74,33 @@ func (j *Job) GetUserId() string {
 	return j.userId
 }
 
+func (j *Job) SendNotifyEmail(err error) {
+	toEmails := strings.Split(j.task.NotifyEmail, "|")
+	for _, toEmail := range toEmails {
+		if toEmail != "" {
+			if j.task.Notify == models.EMAIL_NO_SEND {
+				j.Send(toEmail)
+			} else if j.task.Notify == models.EMAIL_SEND_IF_SUC && err == nil {
+				j.Send(toEmail)
+			} else if j.task.Notify == models.EMAIL_SEND_IF_ERR && err != nil {
+				j.Send(toEmail)
+			} else if j.task.Notify == models.EMAIL_SEND_IF_END {
+				j.Send(toEmail)
+			}
+		}
+	}
+
+}
+
+// 发送邮件
+func (j *Job) Send(toEmail string) {
+	if strings.Contains(j.task.NotifyContent, "html") {
+		email.SendHtmlMail(toEmail, j.task.TaskName, j.task.NotifyContent)
+	} else {
+		email.SendTextMail(toEmail, j.task.TaskName, j.task.NotifyContent)
+	}
+}
+
 func (j Job) Run() {
 	//revel.INFO.Panicln("执行---------")
 	revel.INFO.Println("---------run----------")
@@ -122,35 +149,8 @@ func (j Job) Run() {
 		log.Error = err.Error() + ":" + string(berr)
 	} else {
 		log.Status = 1
-
 	}
-
-	if j.task.Notify == models.EMAIL_NO_SEND {
-		if strings.Contains(j.task.NotifyContent, "html") {
-			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		} else {
-			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		}
-	} else if j.task.Notify == models.EMAIL_SEND_IF_SUC && err == nil {
-		if strings.Contains(j.task.NotifyContent, "html") {
-			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		} else {
-			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		}
-	} else if j.task.Notify == models.EMAIL_SEND_IF_ERR && err != nil {
-		if strings.Contains(j.task.NotifyContent, "html") {
-			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		} else {
-			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		}
-	} else if j.task.Notify == models.EMAIL_SEND_IF_END {
-		if strings.Contains(j.task.NotifyContent, "html") {
-			email.SendHtmlMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		} else {
-			email.SendTextMail(j.task.NotifyEmail, j.task.TaskName, j.task.NotifyContent)
-		}
-	}
-
+	j.SendNotifyEmail(err)
 	models.InsertTaskLogOne(log)
 
 	// 更新上次执行时间

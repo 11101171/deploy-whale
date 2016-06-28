@@ -47,7 +47,7 @@ func (t *Task) Validate(v *revel.Validation) {
 	t.Command = strings.TrimSpace(t.Command)
 	// t.Status = strings.TrimSpace(t.Status)
 	// t.Notify = strings.TrimSpace(t.Notify)
-	t.NotifyEmail = strings.TrimSpace(t.NotifyEmail)
+	// t.NotifyEmail = strings.TrimSpace(t.NotifyEmail)
 	// t.Timeout = strings.TrimSpace(t.Timeout)
 	// t.ExecuteTimes = strings.TrimSpace(t.ExecuteTimes)
 

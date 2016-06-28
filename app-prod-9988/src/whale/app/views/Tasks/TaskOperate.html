@@ -62,6 +62,10 @@
                                         <textarea id="content" name="{{$field.Name}}" class="form-control help-block m-b-none" required="" aria-required="true" aria-invalid="false" aria-describedby="comment-error">{{$field.Value}}{{$field.Flash}}</textarea>
                                         {{$field.Error}}
                                     </div>
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-8">
+									<span>例子：echo '哈哈'</span>
+                              </div>
                                 </div>
                             {{end}}
                             {{with $field := field "task.Notify" .}}
@@ -107,6 +111,10 @@
                                     <input name="{{$field.Name}}" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error" value="{{$field.Value}}{{$field.Flash}}" >
                                     <p class="m-t-md" style="color:red;">{{$field.Error}}</p>
                                 </div>
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-8">
+									<span>多个邮件可以使用"|"隔开<span>
+                              </div>
                               </div>
                             {{end}}
                             {{with $field := field "task.NotifyContent" .}}
