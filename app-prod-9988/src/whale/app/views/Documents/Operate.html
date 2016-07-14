@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Showdown Live Editor</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://showdownjs.github.io/demo/css/style.css">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="http://showdownjs.github.io/demo/img/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="http://showdownjs.github.io/demo/img/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="http://showdownjs.github.io/demo/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="http://showdownjs.github.io/demo/img/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="http://showdownjs.github.io/demo/img/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://showdownjs.github.io/demo/img/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="http://showdownjs.github.io/demo/img/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="http://showdownjs.github.io/demo/img/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://showdownjs.github.io/demo/img/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="http://showdownjs.github.io/demo/img/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="http://showdownjs.github.io/demo/img/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="http://showdownjs.github.io/demo/img/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="http://showdownjs.github.io/demo/img/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="img/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+	
+  <!-- conditional load of showdown's version based on the cookie -->
+  <script>
+    (function() {
+      function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+
+      var ver = getCookie('version') || 'develop',
+          url = 'https://rawgit.com/showdownjs/showdown/' + ver + '/dist/showdown.min.js',
+          scrp = document.createElement('script');
+
+      scrp.setAttribute("type","text/javascript");
+      scrp.src = url;
+      document.getElementsByTagName("head")[0].appendChild(scrp);
+    })();
+  </script>
+
+</head>
+<body ng-controller="editorCtrl" squeeze>
+
+  <nav class="top-bar" data-topbar role="navigation" ng-include="/"></nav>
+
+  <div id="editor-wrapper" class="container">
+    <textarea id="editor" data-ng-model="text"></textarea>
+	
+    <div id="preview" sd-model-to-html="text"></div>
+  </div>
+
+
+  <script src="http://showdownjs.github.io/demo/js/semver.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-sanitize.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-cookies.js"></script>
+  <script src="http://cdn.rawgit.com/dpiccone/ng-pageslide/v1.0.4/dist/angular-pageslide-directive.js"></script>
+
+  <script src="http://showdownjs.github.io/demo/js/editor.js"></script>
+</body>
+</html>

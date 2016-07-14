@@ -53,8 +53,15 @@ GET    /tasks/task/list                 Tasks.TaskList
 *      /tasks/task/:id/start            Tasks.TaskStart
 *      /tasks/task/:id/stop             Tasks.TaskStop
 GET    /tasks/log/:id                   Tasks.TaskLog
+*      /tasks/task/:id/del              Tasks.TaskDel
 *     /ajax/tasks/log/list/:page/:pageSize   Tasks.AjaxTaskLogList
 *     /tasks/send       Tasks.Send
+
+# 文档服务
+GET    /documents/list              Documents.List
+*      /documents/operate           Documents.Operate
+*      /documents/:id/operate       Documents.Operate
+*      /documents/:id/del           Documents.Del
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

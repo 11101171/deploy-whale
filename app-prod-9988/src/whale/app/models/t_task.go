@@ -123,28 +123,32 @@ func SelectTaskOneById(taskId string) (task Task) {
 }
 
 func UpdateTaskOne(task *Task) bool {
-	return Exec(
-		`update t_task 
-		 set TaskName=:TaskName,TaskType=:TaskType,Description=:Description,
-			CronSpec=:CronSpec,Concurrent=:Concurrent,Command=:Command,Status=:Status,
-			Notify=:Notify,NotifyEmail=:NotifyEmail,NotifyContent=:NotifyContent,Timeout=:Timeout,ExecuteTimes=:ExecuteTimes 
-		 where TaskId=:TaskId`,
-		map[string]interface{}{
-			"TaskName":      task.TaskName,
-			"TaskType":      task.TaskType,
-			"Description":   task.Description,
-			"CronSpec":      task.CronSpec,
-			"Concurrent":    task.Concurrent,
-			"Command":       task.Command,
-			"Status":        task.Status,
-			"Notify":        task.Notify,
-			"NotifyEmail":   task.NotifyEmail,
-			"NotifyContent": task.NotifyContent,
-			"Timeout":       task.Timeout,
-			"ExecuteTimes":  task.ExecuteTimes,
-			"TaskId":        task.TaskId,
-		},
-	)
+	_, err := dbmap.Update(task)
+	return CheckErr(err, "Update task one")
+
+	//	return Exec(
+	//		`update t_task
+	//		 set TaskName=:TaskName,TaskType=:TaskType,Description=:Description,
+	//			CronSpec=:CronSpec,Concurrent=:Concurrent,Command=:Command,Status=:Status,
+	//			Notify=:Notify,NotifyEmail=:NotifyEmail,NotifyContent=:NotifyContent,Timeout=:Timeout,ExecuteTimes=:ExecuteTimes,GroupId=:GroupId
+	//		 where TaskId=:TaskId`,
+	//		map[string]interface{}{
+	//			"TaskName":      task.TaskName,
+	//			"TaskType":      task.TaskType,
+	//			"Description":   task.Description,
+	//			"CronSpec":      task.CronSpec,
+	//			"Concurrent":    task.Concurrent,
+	//			"Command":       task.Command,
+	//			"Status":        task.Status,
+	//			"Notify":        task.Notify,
+	//			"NotifyEmail":   task.NotifyEmail,
+	//			"NotifyContent": task.NotifyContent,
+	//			"Timeout":       task.Timeout,
+	//			"ExecuteTimes":  task.ExecuteTimes,
+	//			"GroupId":       task.GroupId,
+	//			"TaskId":        task.TaskId,
+	//		},
+	//	)
 }
 
 func DeleteTaskOneById(taskId string) bool {

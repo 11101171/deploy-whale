@@ -33,6 +33,7 @@ func (b *Base) PerInsert(_ gorp.SqlExecutor) error {
 }
 
 func (b *Base) PerUpdate(_ gorp.SqlExecutor) error {
+	revel.INFO.Println("Super PerUpdate")
 	return b.PreU()
 }
 
@@ -155,6 +156,15 @@ func InitDB() *gorp.DbMap {
 		"TaskName": 100,
 		"Output":   30000,
 		"Error":    30000,
+	})
+
+	documentTable := dbmap.AddTableWithName(Document{}, "o_document")
+	documentTable.SetKeys(false, "DocumentId")
+	setColumnSizes(documentTable, map[string]int{
+		"DocumentId":    45,
+		"Info":          200,
+		"HtmlContent":   30000,
+		"MkdownContent": 30000,
 	})
 
 	dbmap.TraceOn("[gorp]", revel.INFO)
