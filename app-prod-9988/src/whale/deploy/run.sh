@@ -53,7 +53,9 @@ function build(){
      # GOOS=darwin GOARCH=amd64 revel package ${project}
      tar -zxf whale.tar.gz -C ${runpath}
      echo ${runpath}" ${1}模式 ${runmode}"
-     
+     if [ ! -d "${runpath}/logs" ]; then
+         mkdir "${runpath}/logs"
+     fi
 }
 
 function start() {

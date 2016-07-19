@@ -238,6 +238,207 @@ func main() {
 			
 		})
 	
+	revel.RegisterController((*controllers.Users)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					21: []string{ 
+						"users",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Operate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					30: []string{ 
+						"user",
+					},
+					32: []string{ 
+					},
+					37: []string{ 
+						"user",
+					},
+					45: []string{ 
+						"user",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Del",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Agents)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					22: []string{ 
+						"agents",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Operate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "agent", Type: reflect.TypeOf((*models.Agent)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					31: []string{ 
+						"agent",
+					},
+					33: []string{ 
+					},
+					38: []string{ 
+						"agent",
+					},
+					47: []string{ 
+						"agent",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Del",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			&revel.MethodType{
+				Name: "SshList",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					67: []string{ 
+						"agents",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "SshOne",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "agentId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					75: []string{ 
+						"agent",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "SshJoin",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "agentId", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.App)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					10: []string{ 
+					},
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Auth)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Login",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					22: []string{ 
+					},
+					25: []string{ 
+						"user",
+					},
+					35: []string{ 
+						"user",
+						"loginMsg",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Logout",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Documents)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "List",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					22: []string{ 
+						"documents",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Operate",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+					&revel.MethodArg{Name: "document", Type: reflect.TypeOf((*models.Document)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					31: []string{ 
+						"document",
+					},
+					33: []string{ 
+					},
+					38: []string{ 
+						"document",
+					},
+					47: []string{ 
+						"document",
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Del",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
 	revel.RegisterController((*controllers.Tasks)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -362,207 +563,6 @@ func main() {
 			&revel.MethodType{
 				Name: "Send",
 				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.App)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					10: []string{ 
-					},
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Auth)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Login",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					22: []string{ 
-					},
-					25: []string{ 
-						"user",
-					},
-					35: []string{ 
-						"user",
-						"loginMsg",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Logout",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Users)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "List",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					21: []string{ 
-						"users",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Operate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "user", Type: reflect.TypeOf((*models.User)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					30: []string{ 
-						"user",
-					},
-					32: []string{ 
-					},
-					37: []string{ 
-						"user",
-					},
-					45: []string{ 
-						"user",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Del",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Agents)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "List",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					22: []string{ 
-						"agents",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Operate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "agent", Type: reflect.TypeOf((*models.Agent)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					31: []string{ 
-						"agent",
-					},
-					33: []string{ 
-					},
-					38: []string{ 
-						"agent",
-					},
-					47: []string{ 
-						"agent",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Del",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			&revel.MethodType{
-				Name: "SshList",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					67: []string{ 
-						"agents",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "SshOne",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "agentId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					75: []string{ 
-						"agent",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "SshJoin",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "agentId", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-				},
-			},
-			
-		})
-	
-	revel.RegisterController((*controllers.Documents)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "List",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					22: []string{ 
-						"documents",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Operate",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
-					&revel.MethodArg{Name: "document", Type: reflect.TypeOf((*models.Document)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					31: []string{ 
-						"document",
-					},
-					33: []string{ 
-					},
-					38: []string{ 
-						"document",
-					},
-					47: []string{ 
-						"document",
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Del",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "id", Type: reflect.TypeOf((*string)(nil)) },
 				},
 				RenderArgNames: map[int][]string{ 
 				},
