@@ -106,7 +106,7 @@ func (c Tasks) TaskOperate(id string, task models.Task) revel.Result {
 				return c.ErrDataBase(MsgInsertError)
 			}
 		}
-		return c.Redirect(routes.Tasks.TaskList(task.GroupId))
+		return c.Redirect(routes.Tasks.TaskList(""))
 	}
 }
 

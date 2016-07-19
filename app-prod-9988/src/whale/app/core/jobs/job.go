@@ -79,7 +79,8 @@ func (j *Job) SendNotifyEmail(err error) {
 	for _, toEmail := range toEmails {
 		if toEmail != "" {
 			if j.task.Notify == models.EMAIL_NO_SEND {
-				j.Send(toEmail)
+				// j.Send(toEmail)
+				revel.INFO.Println("不发送邮件")
 			} else if j.task.Notify == models.EMAIL_SEND_IF_SUC && err == nil {
 				j.Send(toEmail)
 			} else if j.task.Notify == models.EMAIL_SEND_IF_ERR && err != nil {
