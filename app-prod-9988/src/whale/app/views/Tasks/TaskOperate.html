@@ -138,7 +138,12 @@
 
                                 </div>
                             </div>
-
+							
+							{{if .task.UserId}}
+                                {{with $field := field "task.UserId" .}}
+                                <input type="hidden" name="{{$field.Name}}" value="{{$field.Value}}{{$field.Flash}}" >
+                                {{end}}
+                            {{end}}
                             {{if .task.TaskId}}
                                 {{with $field := field "task.TaskId" .}}
                                 <input type="hidden" name="{{$field.Name}}" value="{{$field.Value}}{{$field.Flash}}" >
